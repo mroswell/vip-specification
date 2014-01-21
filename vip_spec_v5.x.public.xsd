@@ -240,12 +240,15 @@
 							<xs:element name="contest_id" type="xs:integer" minOccur="0"/>					
 							<xs:element name="referndum_id" type="xs:integer" minOccur="0"/>					
 							<xs:element name="sort_order" type="xs:integer" minOccur="0"/>
-							<xs:complexType>
-							<xs:all>
-								<xs:element name="candidate_id" type="xs:integer"/>
-								<xs:element name="sort_order" type="xs:integer" minOccur="0"/>
-							</xs:all>
-						</xs:complexType>
+							<xs:element name="candidate_id" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:integer">
+											<xs:attribute name="sort_order" type="xs:integer"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
 						</xs:all>
 						<xs:attribute name="id" type="xs:string" use="required"/>
 						<xs:attribute name="name" type="xs:string" use="optional"/>
@@ -273,7 +276,7 @@
 					<xs:complexType>
 						<xs:all>
 							<xs:element name="name" type="xs:string"/>
-							<xs:element name="major_party" type="yesNoEnum"/ minOccurs="0">
+							<xs:element name="major_party" type="yesNoEnum" minOccurs="0"/>
 							<xs:element name="abbreviation" type="xs:string" minOccurs="0"/>
 							<xs:element name="initial" type="xs:string" minOccurs="0"/>
 							<xs:element name="sort_order" type="xs:integer" minOccurs="0"/>
